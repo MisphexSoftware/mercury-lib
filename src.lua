@@ -435,20 +435,13 @@ function Library:create(options)
 		Name = "Mercury",
 		Size = UDim2.fromOffset(600, 400),
 		Theme = self.Themes[settings.Theme],
-		Link = "https://github.com/deeeity/mercury-lib"
 	}, options)
 
 	if getgenv and getgenv().MercuryUI then
 		getgenv():MercuryUI()
 		getgenv().MercuryUI = nil
 	end
-
-
-
-	if options.Link:sub(-1, -1) == "/" then
-		options.Link = options.Link:sub(1, -2)
-	end
-
+	
 	if options.Theme.Light then
 		self.darken, self.lighten = self.lighten, self.darken
 	end
@@ -610,21 +603,6 @@ function Library:create(options)
 		Image = "http://www.roblox.com/asset/?id=8497489946",
 		BackgroundTransparency = 1
 	})
-
-	local link = urlBar:object("TextLabel", {
-		AnchorPoint = Vector2.new(0, 0.5),
-		Position = UDim2.new(0, 26, 0.5, 0),
-		BackgroundTransparency = 1,
-		Size = UDim2.new(1, -30, .6, 0),
-		Text = options.Link .. "/home",
-		Theme = {TextColor3 = "WeakText"},
-		TextSize = 14,
-		TextScaled = false,
-		TextXAlignment = Enum.TextXAlignment.Left
-	})
-
-	Library.UrlLabel = link
-	Library.Url = options.Link
 
 	local shadowHolder = core:object("Frame", {
 		BackgroundTransparency = 1,
